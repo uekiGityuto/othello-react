@@ -1,0 +1,29 @@
+.Game {
+  display: flex;
+  flex-direction: column;
+  height: 96vh;
+}
+
+.Game-header {
+  margin-top: 8px;
+}
+
+.Game-header h1 {
+  margin: 2px;
+}
+
+.Game-main {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 100%;
+}
+
+.Game-note {
+  font-weight: bold;
+}
+
+.Game-warning {
+  color: red;
+}

@@ -1,0 +1,18 @@
+.Cell {
+  background-color: green;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+.Cell-stone {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.Cell-black {
+  background-color: black;
+}
+.Cell-white {
+  background-color: white;
+}

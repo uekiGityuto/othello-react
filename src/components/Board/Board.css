@@ -1,0 +1,7 @@
+.Board {
+  height: 100%;
+  aspect-ratio: 1/1;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
