@@ -59,7 +59,6 @@ export class Board {
   }
 
   private search(cell: Cell, turn: Color): Cell[] {
-    // eslint-disable-next-line no-unused-vars
     const searchFunc = (
       current: Cell,
       list: Cell[],

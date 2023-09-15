@@ -10,8 +10,8 @@ type Props = {
 export function VBoard({ board }: Props) {
   return (
     <div className="Board">
-      {board.rows.map((row, i) => (
-        <VRow key={i} row={row}></VRow>
+      {board.rows.map((row, _) => (
+        <VRow key={row.num} row={row}></VRow>
       ))}
     </div>
   )

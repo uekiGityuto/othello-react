@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { VBoard } from 'components/Board'
 import 'components/Game/Game.css'
 import { Board } from 'models/board'

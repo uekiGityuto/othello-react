@@ -7,11 +7,11 @@ type Props = {
   row: Row
 }
 
-export function VRow({row}: Props) {
+export function VRow({ row }: Props) {
   return (
     <div className="Row">
-      {row.cells.map((cell, i) => (
-        <VCell key={i} cell={cell}></VCell>
+      {row.cells.map((cell, _) => (
+        <VCell key={`${cell.x}-${cell.y}`} cell={cell}></VCell>
       ))}
     </div>
   )
