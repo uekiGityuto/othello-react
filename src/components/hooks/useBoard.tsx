@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { Board } from 'models/board'
 import { Cell } from 'models/cell'
-import { useTurn } from 'components/hooks/useTurn'
+import { Color } from 'models/color'
 
-export function useBoard() {
-  const [turn, changeTurn] = useTurn()
+export function useBoard(turn: Color, changeTurn: () => void) {
   const [board, setBoard] = useState(new Board())
 
   const put = (cell: Cell) => {
