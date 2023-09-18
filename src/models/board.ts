@@ -3,15 +3,22 @@ import { Color, WHITE, BLACK } from './color'
 import { Cell } from './cell'
 
 export class Board {
-  readonly rows: Row[]
+  readonly rows: readonly Row[]
   constructor(rows?: Row[]) {
     if (rows === undefined) {
-      const rows = [...Array(8)].map((_, i) => new Row(i))
-      rows[3].cells[3] = rows[3].cells[3].put(BLACK)
-      rows[3].cells[4] = rows[3].cells[4].put(WHITE)
-      rows[4].cells[3] = rows[4].cells[3].put(WHITE)
-      rows[4].cells[4] = rows[4].cells[4].put(BLACK)
-      this.rows = rows
+      const initialRows = [...Array(8)].map((_, i) => new Row(i))
+      const row3 = initialRows[3]
+        .copyWith(new Cell(3, 3).put(BLACK))
+        .copyWith(new Cell(4, 3, WHITE))
+      const row4 = initialRows[4]
+        .copyWith(new Cell(3, 4, WHITE))
+        .copyWith(new Cell(4, 4, BLACK))
+      this.rows = [
+        ...initialRows.slice(0, 3),
+        row3,
+        row4,
+        ...initialRows.slice(5),
+      ]
     } else {
       this.rows = rows
     }

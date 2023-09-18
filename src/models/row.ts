@@ -1,7 +1,7 @@
 import { Cell } from './cell'
 
 export class Row {
-  readonly cells: Cell[]
+  readonly cells: readonly Cell[]
   constructor(
     readonly num: number,
     cells?: Cell[]
