@@ -17,16 +17,19 @@ export class Board {
     }
   }
 
-  put(cell: Cell, turn: Color): Board {
-    // const cells = this.search(cell, turn)
-    // if (cells.length === 0) {
-    //   return false
-    // }
-    // cells.forEach((cell) => cell.reverse())
-    // cell.put(turn)
-    // return true
-    const rows = this.rows.map((row) => row.copyWith(cell.put(turn)))
+  copyWith(newCells: Cell[]): Board {
+    const rows = this.rows.map((row) => row.copyWithCells(newCells))
     return new Board(rows)
+  }
+
+  put(cell: Cell, turn: Color): Board {
+    const cells = this.search(cell, turn)
+    if (cells.length === 0) {
+      return this
+    }
+    const reversedCells = cells.map((cell) => cell.reverse())
+    const newCells = [...reversedCells, cell.put(turn)]
+    return this.copyWith(newCells)
   }
 
   countBlack(): number {

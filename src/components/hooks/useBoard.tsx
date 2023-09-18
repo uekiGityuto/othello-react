@@ -8,8 +8,13 @@ export function useBoard() {
   const [board, setBoard] = useState(new Board())
 
   const put = (cell: Cell) => {
-    setBoard(board.put(cell, turn))
-    changeTurn()
+    const newBoard = board.put(cell, turn)
+    if (newBoard === board) {
+      alert('そこには置けません')
+    } else {
+      setBoard(newBoard)
+      changeTurn()
+    }
   }
 
   return [board, put] as const
