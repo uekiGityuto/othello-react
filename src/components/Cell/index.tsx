@@ -4,7 +4,7 @@ import { Cell } from 'models/cell'
 
 type Props = {
   cell: Cell
-  put: (cell: Cell) => void
+  onClick: (cell: Cell) => void
 }
 
 function colorClass(cell: Cell): string {
@@ -17,12 +17,12 @@ function colorClass(cell: Cell): string {
   }
 }
 
-export function VCell({ cell, put }: Props) {
+export function VCell({ cell, onClick }: Props) {
   return (
     <div className="Cell">
       <div
         className={`Cell-stone ${colorClass(cell)}`}
-        onClick={() => put(cell)}
+        onClick={() => onClick(cell)}
       ></div>
     </div>
   )

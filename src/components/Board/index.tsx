@@ -6,14 +6,14 @@ import { Cell } from 'models/cell'
 
 type Props = {
   board: Board
-  put: (cell: Cell) => void
+  onClick: (cell: Cell) => void
 }
 
-export function VBoard({ board, put }: Props) {
+export function VBoard({ board, onClick }: Props) {
   return (
     <div className="Board">
       {board.rows.map((row, _) => (
-        <VRow key={row.num} row={row} put={put}></VRow>
+        <VRow key={row.num} row={row} onClick={onClick}></VRow>
       ))}
     </div>
   )

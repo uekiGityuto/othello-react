@@ -28,7 +28,7 @@ export function Game() {
         </div>
       </div>
       <div className="Game-main">
-        <VBoard board={board} put={put}></VBoard>
+        <VBoard board={board} onClick={put}></VBoard>
       </div>
     </div>
   )

@@ -6,14 +6,14 @@ import { Cell } from 'models/cell'
 
 type Props = {
   row: Row
-  put: (cell: Cell) => void
+  onClick: (cell: Cell) => void
 }
 
-export function VRow({ row, put }: Props) {
+export function VRow({ row, onClick }: Props) {
   return (
     <div className="Row">
       {row.cells.map((cell, _) => (
-        <VCell key={`${cell.x}-${cell.y}`} cell={cell} put={put}></VCell>
+        <VCell key={`${cell.x}-${cell.y}`} cell={cell} onClick={onClick}></VCell>
       ))}
     </div>
   )
