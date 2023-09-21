@@ -3,13 +3,17 @@ import { Board } from 'models/board'
 import { Cell } from 'models/cell'
 import { Color } from 'models/color'
 
-export function useBoard(turn: Color, changeTurn: () => void) {
+export function useBoard(
+  turn: Color,
+  changeTurn: () => void,
+  setOpen: (open: boolean) => void
+) {
   const [board, setBoard] = useState(new Board())
 
   const put = (cell: Cell) => {
     const newBoard = board.put(cell, turn)
     if (newBoard === board) {
-      alert('そこには置けません')
+      setOpen(true)
     } else {
       setBoard(newBoard)
       changeTurn()

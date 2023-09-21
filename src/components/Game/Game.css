@@ -19,6 +19,10 @@
   font-weight: bold;
 }
 
+.Game-warning {
+  color: red;
+}
+
 .Game-main {
   margin-top: 8px;
   display: flex;
@@ -27,6 +31,8 @@
   flex: 1 1 100%;
 }
 
-.Game-warning {
-  color: red;
+.Game-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
 }

@@ -1,4 +1,7 @@
 import React from 'react'
+import Button from '@mui/material/Button'
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert, { AlertProps } from '@mui/material/Alert'
 import { VBoard } from 'components/Board'
 import 'components/Game/Game.css'
 import { useTurn } from 'components/hooks/useTurn'
@@ -15,9 +18,26 @@ function note(turn: Color): string {
   }
 }
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+  function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+  }
+)
+
 export function Game() {
+  const [open, setOpen] = React.useState(false)
   const [turn, changeTurn] = useTurn()
-  const [board, put] = useBoard(turn, changeTurn)
+  const [board, put] = useBoard(turn, changeTurn, setOpen)
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
   return (
     <div className="Game">
       <div className="Game-header">
@@ -29,6 +49,20 @@ export function Game() {
       </div>
       <div className="Game-main">
         <VBoard board={board} onClick={put}></VBoard>
+      </div>
+      <div className="Game-footer">
+        <Button variant="contained" color="info" onClick={changeTurn}>
+          パス
+        </Button>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: '100%' }}
+          >
+            ここには置けません。
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   )
