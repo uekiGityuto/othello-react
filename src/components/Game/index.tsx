@@ -2,10 +2,11 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import { VBoard } from 'components/Board'
 import { VSnackbar } from 'components/Snackbar'
-import 'components/Game/Game.css'
 import { useTurn } from 'hooks/useTurn'
 import { useBoard } from 'hooks/useBoard'
+import { usePass } from 'hooks/usePass'
 import { Color, BLACK, WHITE } from 'models/color'
+import 'components/Game/Game.css'
 
 function note(turn: Color): string {
   if (turn == BLACK) {
@@ -18,9 +19,11 @@ function note(turn: Color): string {
 }
 
 export function VGame() {
-  const [open, setOpen] = React.useState(false)
+  const [putOpen, setPutOpen] = React.useState(false)
+  const [passOpen, setPassOpen] = React.useState(false)
   const [turn, changeTurn] = useTurn()
-  const [board, put] = useBoard(turn, changeTurn, setOpen)
+  const [board, put] = useBoard(turn, changeTurn, setPutOpen)
+  const [_, pass] = usePass(turn, changeTurn, setPassOpen)
 
   return (
     <div className="Game">
@@ -35,13 +38,18 @@ export function VGame() {
         <VBoard board={board} onClick={put}></VBoard>
       </div>
       <div className="Game-footer">
-        <Button variant="contained" color="info" onClick={changeTurn}>
+        <Button variant="contained" color="info" onClick={pass}>
           パス
         </Button>
         <VSnackbar
-          open={open}
-          setOpen={setOpen}
+          open={putOpen}
+          setOpen={setPutOpen}
           message="ここには置けません。"
+        />
+        <VSnackbar
+          open={passOpen}
+          setOpen={setPassOpen}
+          message="パスは2回までです。"
         />
       </div>
     </div>
