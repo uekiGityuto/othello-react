@@ -6,7 +6,8 @@ import { useTurn } from 'hooks/useTurn'
 import { useBoard } from 'hooks/useBoard'
 import { usePass } from 'hooks/usePass'
 import { Color, BLACK, WHITE } from 'models/color'
-import 'components/Game/Game.css'
+import { buttonStyle } from 'utils/style'
+import 'pages/Game/Game.css'
 
 function note(turn: Color): string {
   if (turn == BLACK) {
@@ -38,7 +39,7 @@ export function VGame() {
         <VBoard board={board} onClick={put}></VBoard>
       </div>
       <div className="Game-footer">
-        <Button variant="contained" color="info" onClick={pass}>
+        <Button variant="contained" sx={buttonStyle} onClick={pass}>
           パス
         </Button>
         <VSnackbar

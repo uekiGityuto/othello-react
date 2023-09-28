@@ -1,0 +1,26 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+}
+
+.Home-btn-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.Home-game-btn {
+  width: 114px;
+  height: 36px;
+}
+
+.Home-img-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.Home-img {
+  height: 84vh;
+  width: auto;
+}
